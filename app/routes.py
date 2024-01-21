@@ -13,7 +13,7 @@ conn = psycopg2.connect(os.getenv('POSTGRES_URI'))
 def index():
     return "Welcome to Ole!"
 
-@app.route('/upload-song', methods=['POST'], strict_slashes=False)
+@app.route('/upload-song', methods=['POST'])
 @cross_origin()
 def add_song():
     try:
@@ -31,7 +31,7 @@ def add_song():
         conn.commit()
         cursor.close()
 
-        return 'Song added', 200
+        return jsonify({'message': 'Song added successfully'}), 200
 
     except Exception as e:
         return str(e), 500
@@ -56,6 +56,20 @@ def get_songs():
             })
 
         return jsonify(songs_data)
+
+    except Exception as e:
+        return str(e), 500
+
+@app.route('/api/songs/<int:song_id>', methods=['DELETE'])
+@cross_origin()
+def delete_song(song_id):
+    try:
+        cursor = conn.cursor()
+        cursor.execute("DELETE FROM songs WHERE id = %s", (song_id,))
+        conn.commit()
+        cursor.close()
+
+        return jsonify({'message': 'Song deleted successfully'}), 200
 
     except Exception as e:
         return str(e), 500
