@@ -2,14 +2,21 @@
 import React, { useState, useEffect } from 'react';
 import SongGrid from './SongGrid';
 import { useNavigate } from "react-router-dom";
+import AudioPlayerBottom from './AudioPlayerBottom';
+import './button-50.css';
 
 function Home() {
+  const [currentSong, setCurrentSong] = useState('');
   const [songs, setSongs] = useState([]);
 
   let navigate = useNavigate();
 
   const navigateToUploadForm = () => {
     navigate('/upload-form');
+  }
+
+  const handleSongSelect = (songUrl) => {
+    setCurrentSong(songUrl);
   }
 
   useEffect(() => {
@@ -40,9 +47,14 @@ function Home() {
   
   return (
     <div>
-      <h1>Welcome to Soundscape</h1>
-      <button onClick={navigateToUploadForm}>Upload a Song</button>
-      <SongGrid songs={songs} onDelete={handleDelete} />
+      <div style={{ display: 'flex', justifyContent: 'center' }}>  
+        <img src="/soundscape_logo.png" alt="logo" width="300" height="150"></img>
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <button className='button-50' onClick={navigateToUploadForm}>Upload a Song</button>
+      </div>
+      <SongGrid songs={songs} onDelete={handleDelete} onSongSelect={handleSongSelect} />
+      <AudioPlayerBottom src={currentSong}/>
     </div>
   );
 }
