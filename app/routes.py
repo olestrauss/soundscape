@@ -1,5 +1,5 @@
 from app import app
-from flask import request
+from flask import request, jsonify
 from werkzeug.utils import secure_filename
 import os
 
@@ -28,4 +28,14 @@ def add_song():
     # Extract song details from request
     # Save song details to database
     return 'Song added', 200
+
+@app.route('/api/songs', methods=['GET'])
+def get_songs():
+    songs = [
+        {"id": 1, "title": "Song One", "artist": "Artist A", "coverImageUrl": "url_to_cover_image_1"},
+        {"id": 2, "title": "Song Two", "artist": "Artist B", "coverImageUrl": "url_to_cover_image_2"},
+        # ... more songs
+    ]
+    return jsonify(songs)
+
 
