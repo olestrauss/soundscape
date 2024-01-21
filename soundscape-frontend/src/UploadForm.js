@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const UploadForm = () => {
   const [title, setTitle] = useState('');
   const [artist, setArtist] = useState('');
-  const [file, setFile] = useState(null);
+  const [image_URI, setImageURI] = useState('');
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -13,9 +13,8 @@ const UploadForm = () => {
     setArtist(e.target.value);
   };
 
-  const handleFileChange = (e) => {
-    const selectedFile = e.target.files[0];
-    setFile(selectedFile);
+  const handleImageURIChange = (e) => {
+    setImageURI(e.target.value);
   };
 
   const handleUpload = () => {
@@ -23,10 +22,12 @@ const UploadForm = () => {
     const formData = new FormData();
     formData.append('title', title);
     formData.append('artist', artist);
-    formData.append('song', file);
+    formData.append('image_uri', image_URI);
+
+    console.log(formData)
 
     // Send a POST request to the server to handle the upload
-    fetch('/upload', {
+    fetch(`http://localhost:5000/upload-song`, {
       method: 'POST',
       body: formData,
     })
@@ -48,8 +49,8 @@ const UploadForm = () => {
       <input type="text" value={title} onChange={handleTitleChange} /><br />
       <label>Artist:</label>
       <input type="text" value={artist} onChange={handleArtistChange} /><br />
-      <label>Select a Song:</label>
-      <input type="file" accept=".mp3,.wav" onChange={handleFileChange} /><br />
+      <label>Image Name:</label>
+      <input type="text" value={image_URI} onChange={handleImageURIChange} /><br />
       <button onClick={handleUpload}>Upload</button>
     </div>
   );
