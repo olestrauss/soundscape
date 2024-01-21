@@ -6,7 +6,7 @@ import psycopg2
 import os
 import glob
 
-CORS(app, resources={r'/*': {'origins': 'http://localhost:3000'}})
+CORS(app, resources={r'/*': {'origins': '*'}}) # http://localhost:3000
 
 conn = psycopg2.connect(os.getenv('POSTGRES_URI'))
 
