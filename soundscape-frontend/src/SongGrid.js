@@ -1,6 +1,6 @@
 // src/SongGrid.js
 import React from 'react';
-import './SongGrid.css'; // Create this CSS file for styling
+import './SongGrid.css'; 
 
 const SongGrid = ({ songs }) => {
     console.log('Songs in SongGrid:', songs);

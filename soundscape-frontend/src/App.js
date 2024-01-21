@@ -1,9 +1,15 @@
 import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 import Home from './Home';
-
+import UploadForm from './UploadForm';
 
 function App() {
-  return <h1>Hello from Soundscape</h1>;
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/upload-form" element={<UploadForm />} />
+    </Routes>
+  );
 }
 
 export default App;
