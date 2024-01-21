@@ -4,29 +4,25 @@ import { useNavigate } from 'react-router-dom';
 const UploadForm = () => {
   const [title, setTitle] = useState('');
   const [artist, setArtist] = useState('');
-  const [imageURI, setImageURI] = useState('');
+  const [coverImage, setCoverImage] = useState(null);
+  const [audioFile, setAudioFile] = useState(null);
   const navigate = useNavigate();
 
-  const handleTitleChange = (e) => {
-    setTitle(e.target.value);
+  const handleCoverImageChange = (e) => {
+    setCoverImage(e.target.files[0]);
   };
 
-  const handleArtistChange = (e) => {
-    setArtist(e.target.value);
-  };
-
-  const handleImageURIChange = (e) => {
-    setImageURI(e.target.value);
+  const handleAudioFileChange = (e) => {
+    setAudioFile(e.target.files[0]);
   };
 
   const handleUpload = () => {
-    // Create a FormData object to send the form data to the server
     const formData = new FormData();
     formData.append('title', title);
     formData.append('artist', artist);
-    formData.append('image_uri', imageURI);
+    formData.append('cover_image', coverImage);
+    formData.append('audio_file', audioFile);
 
-    // Send a POST request to the server to handle the upload
     fetch(`http://localhost:5000/upload-song`, {
       method: 'POST',
       body: formData,
@@ -35,16 +31,17 @@ const UploadForm = () => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-      return response.json();
+      if (response.headers.get("content-type").includes("application/json")) {
+        return response.json();
+      }
+      return response.text();
     })
     .then(data => {
       console.log('Success:', data);
-      // Redirect to the home page after upload is complete
       navigate('/');
     })
     .catch(error => {
       console.error('Error during upload:', error);
-      // Optionally, handle the error state here
     });
   };
 
@@ -52,11 +49,17 @@ const UploadForm = () => {
     <div>
       <h1>Upload a Song</h1>
       <label>Title:</label>
-      <input type="text" value={title} onChange={handleTitleChange} /><br />
+      <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} /><br />
+      
       <label>Artist:</label>
-      <input type="text" value={artist} onChange={handleArtistChange} /><br />
-      <label>Image URI:</label>
-      <input type="text" value={imageURI} onChange={handleImageURIChange} /><br />
+      <input type="text" value={artist} onChange={(e) => setArtist(e.target.value)} /><br />
+      
+      <label>Cover Image:</label>
+      <input type="file" accept="image/jpeg, image/png" onChange={handleCoverImageChange}  /><br />
+      
+      <label>Song File:</label>
+      <input type="file" accept=".mp3, .wav" onChange={handleAudioFileChange} /><br />
+      
       <button onClick={handleUpload}>Upload</button>
     </div>
   );
