@@ -4,7 +4,7 @@ import './SongGrid.css';
 // Create a CSS class to style the images with consistent dimensions
 const IMAGE_CLASS = 'song-image';
 
-const SongGrid = ({ songs }) => {
+const SongGrid = ({ songs, onDelete }) => {
   console.log('Songs in SongGrid:', songs);
   
   return (
@@ -15,6 +15,7 @@ const SongGrid = ({ songs }) => {
           <img src={song.image_uri} alt={song.title} className={IMAGE_CLASS} />
           <h3>{song.title}</h3>
           <p>{song.artist}</p>
+          <button onClick={() => onDelete(song.id)} className="delete-button">🗑️</button>
         </div>
       ))}
     </div>

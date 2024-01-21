@@ -22,3 +22,10 @@
   max-width: 200px; /* Maximum width for the song images */
   max-height: 150px; /* Maximum height for the song images */
 }
+
+.delete-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+}
