@@ -3,6 +3,7 @@ import React from 'react';
 import './SongGrid.css'; // Create this CSS file for styling
 
 const SongGrid = ({ songs }) => {
+    console.log('Songs in SongGrid:', songs);
   return (
     <div className="song-grid">
       {songs.map(song => (
