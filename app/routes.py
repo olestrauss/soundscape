@@ -11,7 +11,7 @@ conn = psycopg2.connect(os.getenv('POSTGRES_URI'))
 
 @app.route('/')
 def index():
-    return "Welcome to Soundscape!"
+    return "Welcome to Ole!"
 
 @app.route('/upload-song', methods=['POST'])
 def add_song():
