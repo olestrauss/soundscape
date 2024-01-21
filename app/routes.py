@@ -5,7 +5,7 @@ from werkzeug.utils import secure_filename
 import psycopg2
 import os
 
-CORS(app, resources={r'/api/*': {'origins': 'http://localhost:3000'}})
+CORS(app, resources={r'/*': {'origins': 'http://localhost:3000'}})
 
 conn = psycopg2.connect(os.getenv('POSTGRES_URI'))
 
@@ -13,13 +13,14 @@ conn = psycopg2.connect(os.getenv('POSTGRES_URI'))
 def index():
     return "Welcome to Ole!"
 
-@app.route('/upload-song', methods=['POST'])
+@app.route('/upload-song', methods=['POST'], strict_slashes=False)
+@cross_origin()
 def add_song():
     try:
         # Extract song details from request
         title = request.form['title']
         artist = request.form['artist']
-        cover_image_url = request.form['cover_image_url']
+        cover_image_url = request.form['image_uri']
 
         # Insert song into the database
         cursor = conn.cursor()
@@ -51,7 +52,7 @@ def get_songs():
                 'id': song[0],
                 'title': song[1],
                 'artist': song[2],
-                'cover_image_url': song[3]
+                'image_uri': song[3]
             })
 
         return jsonify(songs_data)
