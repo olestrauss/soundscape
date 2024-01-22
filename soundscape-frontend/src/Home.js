@@ -1,19 +1,13 @@
 // src/Home.js
 import React, { useState, useEffect } from 'react';
 import SongGrid from './SongGrid';
-import { useNavigate } from "react-router-dom";
 import AudioPlayerBottom from './AudioPlayerBottom';
 import './button-50.css';
+import Navbar from './NavBar'; 
 
 function Home() {
   const [currentSong, setCurrentSong] = useState('');
   const [songs, setSongs] = useState([]);
-
-  let navigate = useNavigate();
-
-  const navigateToUploadForm = () => {
-    navigate('/upload-form');
-  }
 
   const handleSongSelect = (songUrl) => {
     setCurrentSong(songUrl);
@@ -47,11 +41,9 @@ function Home() {
   
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <h1>Soundscape</h1>
-      </div>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <button className='button-50' onClick={navigateToUploadForm}>Upload a Song</button>
+      <Navbar /> 
+      <div style={{ display: 'flex', justifyContent: 'left' }}>
+        <img src="logo.png" alt="Logo" width="300" height="125"/>
       </div>
       <SongGrid songs={songs} onDelete={handleDelete} onSongSelect={handleSongSelect} />
       <AudioPlayerBottom src={currentSong}/>
