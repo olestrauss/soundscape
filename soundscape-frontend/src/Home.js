@@ -47,8 +47,8 @@ function Home() {
   
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>  
-        <img src="/soundscape_logo.png" alt="logo" width="300" height="150"></img>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <h1>Soundscape</h1>
       </div>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <button className='button-50' onClick={navigateToUploadForm}>Upload a Song</button>

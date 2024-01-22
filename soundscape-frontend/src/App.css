@@ -2,19 +2,6 @@
   text-align: center;
 }
 
-.song-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  padding: 20px;
-}
-
-.song {
-  border: 1px solid #ddd;
-  padding: 10px;
-  text-align: center;
-}
-
 .audio-player-bottom {
   position: fixed;
   bottom: 0;

@@ -4,7 +4,6 @@ import Home from './Home';
 import UploadForm from './UploadForm';
 import './App.css';
 
-
 function App() {
   return (
     <Routes>
