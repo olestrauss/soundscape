@@ -29,13 +29,19 @@ def add_song():
         artist = request.form['artist']
 
         # Insert song into the database without file paths
-        cursor = conn.cursor()
-        cursor.execute(
-            "INSERT INTO songs (title, artist) VALUES (%s, %s) RETURNING id",
-            (title, artist)
-        )
-        song_id = cursor.fetchone()[0]
-        conn.commit()
+        # ensure no failed uploads cause transaction to fail
+        # rollback and return error
+        try:
+            cursor = conn.cursor()
+            cursor.execute(
+                "INSERT INTO songs (title, artist) VALUES (%s, %s) RETURNING id",
+                (title, artist)
+            )
+            song_id = cursor.fetchone()[0]
+            conn.commit()
+        except Exception as e:
+            conn.rollback()
+            return str(e), 500
 
         cover_image = request.files['cover_image']
         song_file = request.files['audio_file']
