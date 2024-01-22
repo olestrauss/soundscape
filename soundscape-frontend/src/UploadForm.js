@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './uploadForm.css';
+import Navbar from './NavBar';
 
 const UploadForm = () => {
   const [title, setTitle] = useState('');
@@ -46,23 +48,25 @@ const UploadForm = () => {
   };
 
   return (
-    <div>
-      <h1>Upload a Song</h1>
-      <label>Title:</label>
-      <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} /><br />
-      
-      <label>Artist:</label>
-      <input type="text" value={artist} onChange={(e) => setArtist(e.target.value)} /><br />
-      
-      <label>Cover Image:</label>
-      <input type="file" accept="image/jpeg, image/png" onChange={handleCoverImageChange}  /><br />
-      
-      <label>Song File:</label>
-      <input type="file" accept=".mp3, .wav" onChange={handleAudioFileChange} /><br />
-      
-      <button onClick={handleUpload}>Upload</button>
+    <div className="upload-form-container">
+      <Navbar />
+      <div className="form-container">
+        <h1>Upload a Song</h1>
+        <label>Title:</label>
+        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+  
+        <label>Artist:</label>
+        <input type="text" value={artist} onChange={(e) => setArtist(e.target.value)} />
+  
+        <label>Cover Image:</label>
+        <input type="file" accept="image/jpeg, image/png" onChange={handleCoverImageChange} />
+  
+        <label>Song File:</label>
+        <input type="file" accept=".mp3, .wav" onChange={handleAudioFileChange} />
+  
+        <button onClick={handleUpload}>Upload</button>
+      </div>
     </div>
   );
 };
-
 export default UploadForm;

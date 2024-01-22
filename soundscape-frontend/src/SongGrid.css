@@ -27,14 +27,18 @@
   object-fit: cover;
 }
 
+.song-title {
+  margin: 0;
+  color: #8C9BAB;
+  font-size: 16px;
+}
+
 .song-info {
   padding: 0; /* Adjust as needed */
   text-align: left;
   width: 100%; /* Ensure full width for alignment */
-}
-
-.song-title {
-  margin: 0;
+  color: #DEE4EA;
+  font-size: 14px;
 }
 
 .artist-delete-container {
@@ -79,3 +83,4 @@
 .delete-button .fa-trash {
   font-size: 15px; /* Adjust size as needed */
 }
+
