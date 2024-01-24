@@ -1,0 +1,57 @@
+.preview-song-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .preview-song-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .preview-song-image-container {
+    width: 100%;
+    padding-top: 100%; /* 1:1 Aspect Ratio */
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .preview-song-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .preview-song-title {
+    margin: 0;
+    margin-bottom: -10px;
+    color: #8C9BAB;
+    font-size: 16px;
+  }
+  
+  .preview-song-info {
+    padding: 0; /* Adjust as needed */
+    text-align: left;
+    width: 100%; /* Ensure full width for alignment */
+    color: #DEE4EA;
+    font-size: 14px;
+  }
+  
+  .preview-song-artist {
+    margin: 0;
+  }
+  
+  .delete-button {
+    margin-top: 0;
+  }
+  
+  @media (max-width: 600px) {
+    .preview-song-grid {
+      grid-template-columns: 1fr;
+    }
+  }
