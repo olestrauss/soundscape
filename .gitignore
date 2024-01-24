@@ -3,5 +3,4 @@ soundVenv
 .env
 *.pyc
 node_modules
-covers/*
-music/*
+Assets
