@@ -23,7 +23,14 @@
     margin: 0;
     padding: 0;
   }
-  
+
+  .nav-tab-logo {
+    margin-right: 20px;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+  }
+
   .nav-tab {
     margin-right: 20px;
   }
