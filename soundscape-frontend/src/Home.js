@@ -1,4 +1,5 @@
 // src/Home.js
+
 import React, { useState, useEffect } from 'react';
 import SongGrid from './SongGrid';
 import AudioPlayerBottom from './AudioPlayerBottom';
@@ -14,7 +15,7 @@ function Home() {
   }
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/songs') // Adjust the URL based on your Flask API
+    fetch('http://localhost:5000/api/songs') 
       .then(response => response.json())
       .then(data => {
         console.log('Songs fetched:', data);
@@ -31,7 +32,7 @@ function Home() {
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-      // If delete was successful, update the state to remove the song
+
       setSongs(songs => songs.filter(song => song.id !== songId));
     })
     .catch(error => {
