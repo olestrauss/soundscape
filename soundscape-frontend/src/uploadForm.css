@@ -23,22 +23,24 @@
 }
 
 .upload-form {
-  background-color: #003d23;
+  position: relative;
+  background: rgb(131,58,180);
+  background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(208,76,153,1) 50%, rgba(236,92,63,1) 100%); 
+  opacity: 0.9;
+  background-size: cover;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
-}
-
-button {
-  margin-top: 10px;
+  color: #221e1f;
 }
 
 label {
   display: block;
   margin-top: 10px;
   font-weight: bold;
-  color: #fff
+  color: #030303;
+  text-align: left;
 }
 
 input {
@@ -49,10 +51,6 @@ input {
   border-radius: 5px;
   text-align: center;
   display: block;
-}
-
-input[type='file'] {
-  color: rgba(0, 0, 0, 0)
 }
 
 button {
@@ -76,3 +74,47 @@ button {
   
 }
 
+.form-group {
+  margin-bottom: 15px;
+}
+
+.custom-button {
+  display: inline-block;
+  outline: 0;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 5px;
+  font-size: 13px;
+  height: 30px;
+  background-color: #030303;
+  color: white;
+  padding: 0 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.custom-button:hover {
+  background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(208,76,153,1) 50%, rgba(236,92,63,1) 100%); ;
+}
+
+.custom-button span {
+  display: block;
+  padding: 6px 12px;
+  pointer-events: none;
+}
+
+.custom-file-input input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+input[type="text"] {
+  background-color: #221e1f;
+  color: #de546d
+}

@@ -62,34 +62,52 @@ const UploadForm = () => {
 
   return (
     <div>
-    <Navbar />
-    <div className="upload-page">
-      <div className="upload-container">
-        <div className="upload-preview">
-          <UploadPreview title={title} artist={artist} coverImageUrl={coverImageUrl} />
-        </div>
-        <div className="upload-form">
-          <h1>Upload a Song</h1>
-          <label>Title:</label>
-          <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-
-          <label>Artist:</label>
-          <input type="text" value={artist} onChange={(e) => setArtist(e.target.value)} />
-
-          <label>Cover Image:</label>
-          <div className="cover-image-input">
-            <input type="file" accept="image/jpeg, image/png" onChange={handleImageChange} />
+      <Navbar />
+      <div className="upload-page">
+        <div className="upload-container">
+          <div className="upload-preview">
+            <UploadPreview title={title} artist={artist} coverImageUrl={coverImageUrl} />
           </div>
-
-          <label>Song File:</label>
-          <input type="file" accept=".mp3, .wav" onChange={handleAudioFileChange} />
-
-          <button onClick={handleUpload}>Upload</button>
+          <div className="upload-form">
+            <h1>Upload a Song</h1>
+            <div className="form-group">
+              <label>Title:</label>
+              <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+            </div>
+  
+            <div className="form-group">
+              <label>Artist:</label>
+              <input type="text" value={artist} onChange={(e) => setArtist(e.target.value)} />
+            </div>
+  
+            <div className="form-group">
+              <label>Cover Image:</label>
+              <div className="custom-file-input">
+                <label className="custom-button">
+                  <span>Browse</span>
+                  <input type="file" accept="image/jpeg, image/png" onChange={handleImageChange} />
+                </label>
+              </div>
+            </div>
+  
+            <div className="form-group">
+              <label>Song File:</label>
+              <div className="custom-file-input">
+                <label className="custom-button">
+                  <span>Browse</span>
+                  <input type="file" accept=".mp3, .wav" onChange={handleAudioFileChange} />
+                </label>
+              </div>
+            </div>
+  
+            <div className="form-group">
+              <button onClick={handleUpload}>Upload</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    </div>
   );
-};
-
+  
+}
 export default UploadForm;
