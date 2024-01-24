@@ -9,7 +9,9 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
-  padding-top: 100px;
+  padding-top: 72px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .song-card {
