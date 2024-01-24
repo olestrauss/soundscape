@@ -7,7 +7,7 @@ import 'react-h5-audio-player/lib/styles.css';
 const AudioPlayerBottom = ({ src }) => {
   return (
     <div className="audio-player-bottom">
-      <AudioPlayer src={src} autoPlay />
+      <AudioPlayer src={src} volume={.2} showJumpControls={false} showSkipControls/>
     </div>
   );
 };
