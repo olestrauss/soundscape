@@ -1,8 +1,15 @@
+.song-grid-bg {
+  background-color: #221e1f;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the container takes up at least the full viewport height */
+}
+
 .song-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
-  padding: 20px;
+  padding-top: 100px;
 }
 
 .song-card {

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './UploadForm.css';
 import Navbar from './NavBar';
-import UploadPreview from './UploadPreview'; // Import the UploadPreview component
+import UploadPreview from './UploadPreview'; 
 
 const UploadForm = () => {
   const [title, setTitle] = useState('');
@@ -35,7 +35,7 @@ const UploadForm = () => {
     const formData = new FormData();
     formData.append('title', title);
     formData.append('artist', artist);
-    formData.append('cover_image', coverImage); // Send the cover image URL instead of the file
+    formData.append('cover_image', coverImage); 
     formData.append('audio_file', audioFile);
 
     fetch(`http://localhost:5000/upload-song`, {
