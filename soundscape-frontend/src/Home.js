@@ -43,9 +43,6 @@ function Home() {
   return (
     <div>
       <Navbar /> 
-      <div style={{ display: 'flex', justifyContent: 'left' }}>
-        <img src="logo.png" alt="Logo" width="300" height="125"/>
-      </div>
       <SongGrid songs={songs} onDelete={handleDelete} onSongSelect={handleSongSelect} />
       <AudioPlayerBottom src={currentSong}/>
     </div>
