@@ -1,5 +1,5 @@
 .song-grid-bg {
-  background-color: #221e1f;
+  background-color: #4F523A /* #221e1f;
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* Ensure the container takes up at least the full viewport height */
